@@ -1,0 +1,31 @@
+server:
+  port: 8082
+kafka:
+  boot:
+    server: 127.0.0.1:9092
+  consumer:
+    group:
+      string:
+        id: group_str
+      json:
+        id: group_json
+  topic:
+    string:
+      name: strings
+    json:
+      tweets: tweets
+      articles: articles
+
+spring:
+  data:
+    elasticsearch:
+      cluster-name: docker-cluster
+      cluster-nodes: 127.0.0.1:9300
+elasticsearch:
+  index:
+    stream: stream
+    crawler: crawler
+  type:
+      tweet: tweet
+      article: article
+      
