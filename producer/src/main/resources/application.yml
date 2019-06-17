@@ -1,0 +1,25 @@
+#Kafka Configs
+kafka:
+  boot:
+    server: 127.0.0.1:9092
+  topic:
+    string:
+      name: strings
+    json:
+      tweet: tweets
+      article: articles
+
+# Twitter Social Configs
+social:
+  twitter:
+    auth:
+#      apiKey: API_KEY
+#      apiSecretKey: API_SECRET_KEY
+#      accessToken: ACCESS_TOKEN
+#      accessTokenSecret: ACCESS_TOKEN_SECRET
+    count: 100
+
+# Crawler Configs
+crawler:
+  maxPagesToSearch: 100
+  pagesLimit: 20

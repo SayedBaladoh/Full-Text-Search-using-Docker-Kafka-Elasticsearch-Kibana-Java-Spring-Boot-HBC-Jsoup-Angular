@@ -16,7 +16,7 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
       KAFKA_ADVERTISED_PORT: "9092"
-      KAFKA_CREATE_TOPICS: "tweets:1:1,articles:1:1"
+      KAFKA_CREATE_TOPICS: "tweets:1:1,articles:1:1,strings:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zk:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
