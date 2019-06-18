@@ -1,0 +1,32 @@
+<!--style="width: 400px"-->
+<!-- <div class="container">
+ 
+  <div style="color: blue; margin-bottom: 20px">
+    <h2>{{title}}</h2>
+    <h4>{{description}}</h4>
+  </div>
+
+  <nav>
+    <a routerLink="config" class="btn btn-primary active" role="button" routerLinkActive="active">Settings</a> |
+    <a routerLink="search" class="btn btn-primary active" role="button" routerLinkActive="active">Search</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div> -->
+
+<div class='container'>
+  <div class="page-header">
+    <h2>{{title}}</h2>
+    <h4>{{description}}</h4>
+    <nav>
+      <a routerLink="config" class="routerLink" role="button" routerLinkActive="active">Settings</a> | 
+      <a routerLink="search" class="routerLink" role="button" routerLinkActive="active">Search</a>
+    </nav>
+  </div>
+
+  <div class="routerLink">
+    
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>

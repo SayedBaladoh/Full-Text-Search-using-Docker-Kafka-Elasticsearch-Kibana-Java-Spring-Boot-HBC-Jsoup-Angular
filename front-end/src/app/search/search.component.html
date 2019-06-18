@@ -1,0 +1,102 @@
+<!-- <div style="margin-top:20px">
+
+  <div class="keyword-wrapper">
+    <input [formControl]="queryField" type="text" id="keyword" placeholder="Enter keyword to search..." autofocus/>
+  </div>
+  <div *ngFor="let result of results" style="margin-top:20px">
+    <div *ngIf="result">
+      <div>
+        <label>User Name: </label> {{result.userName}}
+      </div>
+      <div *ngIf="result.language!=''">
+        <label>Language: </label> {{result.language | uppercase}}
+      </div>
+      <div>
+        <! - - <label>Text: </label>- -> {{result.text}} 
+      </div>
+      <div *ngIf="result.date?.length > 0">
+        <label>Published: </label> {{result.date | date:'long'}}
+      </div>
+      <hr/>
+    </div>
+  </div>
+
+  <div *ngIf="results?.length < 1" style="margin-top:20px">
+    <p>Not found!</p>
+  </div>
+
+</div> -->
+
+<div class="row">
+  <div class="input-group input-group-lg col-sm-8 col-md-8">
+    <input class="form-control" [formControl]="queryField" type="text" id="keyword" placeholder="Search..." autofocus/>
+  </div>
+  <div class="form-group">
+    <label for="UserStatus" class="col-md-1 control-label">Where: </label>
+    <div class="col-md-7">
+      <label class="radio-inline">
+        <input type="radio" id="inlineRadio1" [value]="tweets" [checked]="true" name="searc_At" (change)="onItemChange('tweets')"> Tweets
+      </label>
+      <label class="radio-inline">
+        <input type="radio" id="inlineRadio2" [value]="web" name="searc_At" (change)="onItemChange('web')"> Web Articles
+      </label>
+      <!-- <label class="radio-inline">
+        <input type="radio" id="inlineRadio3" [value]="all" name="searc_At" [disabled]="true" (change)="onItemChange('all')"> All [TODO]
+      </label> -->
+    </div>
+  </div>
+  <div></div>
+  <div class="row" style="margin-top:20px">
+    <div *ngIf="results?.totalPages < 1" style="margin-top:20px">
+      <p>Not found!</p>
+    </div>
+    <div class="thumbnail" *ngIf="results?.totalPages>0">
+      <div class="caption">
+        <p>{{results.totalElements}} Hits, {{results.totalPages}} Pages</p>
+        <p>Page: {{results.number+1}}, Displaying Results: ({{results.numberOfElements}}) </p>
+      </div>
+      <!-- Top Pagination Card -->
+      <div class="mui-panel pagination-panel">
+        <button class="mui-btn mui-btn--flat" [disabled]="results.number-1<0" (click)="getResultsPage(results.number-1)">Prev Page</button>
+        <button class="mui-btn mui-btn--flat" [disabled]="results.number+1>=results.totalPages" (click)="getResultsPage(results.number+1)">Next Page</button>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4" *ngFor="let result of results.content">
+
+      <div class="thumbnail">
+        <div class="caption" *ngIf="searchAt=='tweets'">
+          <p *ngIf="result.userName">
+            <label>User Name: </label> {{result.userName}}
+          </p>
+          <p style="background-color:#ecf4f4; border: 1px solid #ddd">{{result.text}}</p>
+          <p *ngIf="result.language">
+            <label>Language: </label> {{result.language | uppercase}}
+          </p>
+          <p *ngIf="result.date?.length > 0">
+            <label>Published: </label> {{result.date | date:'long'}}
+          </p>
+        </div>
+
+        <div class="caption" *ngIf="searchAt=='web'">
+          <p *ngIf="result.title">
+            <label>Title: </label> {{result.title}}
+          </p>
+          <p *ngIf="result.url">
+            <label>URL: </label>
+            <a href="{{result.url}}" target="_blank">{{result.url}}</a>
+          </p>
+          <p style="background-color:#ecf4f4; border: 1px solid #ddd">{{result.text}}</p>
+
+        </div>
+
+        <div class="caption" *ngIf="searchAt=='all'">
+          <p *ngIf="result.title">
+            <label>Title: </label> {{result.title}}
+          </p>
+          <p style="background-color:#ecf4f4; border: 1px solid #ddd">{{result.text}}</p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>

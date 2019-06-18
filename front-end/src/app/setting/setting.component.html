@@ -1,0 +1,72 @@
+<h3>
+  Settings
+</h3>
+<hr/>
+<h4>
+  Streamer Settings
+</h4>
+<div>
+  <button type="button" class="btn btn-primary" (click)="deleteTweets()" [disabled]="isDeleteingTweets" >Delete all collected tweets</button> 
+  <img *ngIf="isDeleteingTweets" src="assets/spinnerGrey.gif" />
+</div>
+
+<div>
+  <h4>Launch real-time tweets Streamer</h4>
+  <form [formGroup]="twitterForm" (ngSubmit)="onSubmitTwitterForm(twitterForm)">
+    <div class="form-group">
+      <label for="q">Query: </label>
+      <div>
+        <input formControlName="q" placeholder="Keywords">* Add multiple keywords seprated by , like: Egypt, مصر
+      </div>
+      <label for="count">Count: </label>
+      <div>
+        <input formControlName="count" placeholder="Count"> Total number of tweets, default: (100)
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary"  data-dismiss="modal" [disabled]="!isTweeterDone || twitterForm.invalid">Send</button> 
+        <img *ngIf="!isTweeterDone" src="assets/spinnerGrey.gif" />
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+<hr/>
+<h4>
+ Crawler Settings
+</h4>
+<div>
+  <button class="btn btn-primary" type="button" (click)="deleteCrawler()" [disabled]="isDeleteingArticles">Delete all current collected data</button> 
+  <img *ngIf="isDeleteingArticles" src="assets/spinnerGrey.gif" />
+</div>
+<div>
+  <h4>Launch web crawler</h4>
+  <form [formGroup]="crawlerForm" (ngSubmit)="onSubmitCrawlerForm(crawlerForm)">
+    <div class="form-group">
+      <label for="url">URL: </label>
+      <div>
+        <input formControlName="url" placeholder="URL">*
+      </div>
+      <label for="q">Query: </label>
+      <div>
+        <input formControlName="q" placeholder="Keyword">*
+      </div>
+      <label for="count">Count: </label>
+      <div>
+        <input formControlName="count" placeholder="Count"> The limit for retrieving pages, Defult (20)
+      </div>
+      <label for="maxPagesToSearch">Max Pages to Search: </label>
+      <div>
+        <input formControlName="maxPagesToSearch" placeholder="Max Pages to Search"> The maximum pages to search, Default (100)
+      </div>
+      <div> </div>
+      <div>
+        <button type="submit" class="btn btn-primary" [disabled]="!isCrawlerDone || crawlerForm.invalid">Send</button> 
+         <img *ngIf="!isCrawlerDone" src="assets/spinnerGrey.gif" />
+      </div>
+    </div>
+
+  </form>
+
+</div>
