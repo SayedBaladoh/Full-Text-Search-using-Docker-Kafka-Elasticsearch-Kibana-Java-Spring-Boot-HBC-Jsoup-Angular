@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +19,7 @@ import com.sayedbaladoh.buzzdiggr.consumer.model.Tweet;
 import com.sayedbaladoh.buzzdiggr.consumer.service.TweetService;
 
 @RestController
+@CrossOrigin(origins = "${frontend.url}", allowedHeaders = "*")
 @RequestMapping("/api/tweets")
 public class TweetController {
 
@@ -38,13 +42,13 @@ public class TweetController {
 	}
 
 	@GetMapping()
-	public Page<Tweet> getAllTweet(Pageable page) {
-		return tweetService.getAll(page);
+	public Page<Tweet> getAllTweet(Pageable pageable) {
+		return tweetService.getAll(pageable);
 	}
 
 	@GetMapping(params = { "q" })
-	public List<Tweet> search(@RequestParam(name = "q") String keyword) {
-		return tweetService.getByText(keyword);
+	public Page<Tweet> search(@RequestParam(name = "q") String keyword, Pageable pageable) {
+		return tweetService.getByText(keyword, pageable);
 	}
 
 	@GetMapping(params = { "userName" })
@@ -55,6 +59,12 @@ public class TweetController {
 	@GetMapping(params = { "language" })
 	public List<Tweet> searchByLanguage(@RequestParam(name = "language") String language) {
 		return tweetService.getByLanguage(language);
+	}
+
+	@DeleteMapping("/all")
+	public ResponseEntity<?> deleteBodyType() {
+		tweetService.removeAll();
+		return ResponseEntity.ok().build();
 	}
 
 }

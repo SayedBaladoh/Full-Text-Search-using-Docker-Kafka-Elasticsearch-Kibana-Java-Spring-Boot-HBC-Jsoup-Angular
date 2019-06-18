@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ import io.swagger.annotations.ApiOperation;
  *
  */
 @RestController
+@CrossOrigin(origins = "${frontend.url}")
 @RequestMapping("/api/stream")
 @Api(value = "Stream", description = "Initialize and instantiate Streaming and Crowling API")
 public class StreamController {

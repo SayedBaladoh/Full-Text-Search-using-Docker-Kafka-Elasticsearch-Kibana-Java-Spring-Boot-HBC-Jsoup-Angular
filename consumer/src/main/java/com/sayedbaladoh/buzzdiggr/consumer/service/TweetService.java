@@ -67,6 +67,10 @@ public class TweetService {
 	// }
 	// }
 
+	public void removeAll() {
+		tweetRepository.deleteAll();
+	}
+	
 	public List<Tweet> getAll() {
 		List<Tweet> tweetsList = new ArrayList<>();
 		Iterable<Tweet> tweetses = tweetRepository.findAll();
@@ -86,8 +90,8 @@ public class TweetService {
 		return tweetsList;
 	}
 
-	public List<Tweet> getByText(String text) {
-		return tweetRepository.findByText(text);
+	public  Page<Tweet> getByText(String text, Pageable pageable) {
+		return tweetRepository.findByText(text, pageable);
 	}
 
 	public List<Tweet> getByLanguage(String language) {
@@ -97,4 +101,29 @@ public class TweetService {
 	public List<Tweet> getByUserName(String userName) {
 		return tweetRepository.findByUserName(userName);
 	}
+	
+//	 @Autowired
+//	    private ElasticsearchTemplate elasticsearchTemplate;
+//
+//	    public List<Tweet> findAllByText(String text) {
+//	        MatchQueryBuilder queryBuilder = QueryBuilders.matchPhrasePrefixQuery("name", name);
+//
+//	        //You can query as many indices as you want
+//	        IndicesQueryBuilder builder = QueryBuilders.indicesQuery(queryBuilder, "stream", "crawler");
+//
+//	        SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder).build();
+//
+//	        return elasticsearchTemplate.query(searchQuery, response -> {
+//	            SearchHits hits = response.getHits();
+//	            List<Tweet> result = new ArrayList<>();
+//	            Arrays.stream(hits.getHits()).forEach(h -> {
+//	                Map<String, Object> source = h.getSource();
+//	                //get only id just for test
+//	                Tweet tweet = new Tweet()
+//	                        .setId(String.valueOf(source.getOrDefault("id", null)));
+//	                result.add(tweet);
+//	            });
+//	            return result;
+//	        });
+//	    }
 }

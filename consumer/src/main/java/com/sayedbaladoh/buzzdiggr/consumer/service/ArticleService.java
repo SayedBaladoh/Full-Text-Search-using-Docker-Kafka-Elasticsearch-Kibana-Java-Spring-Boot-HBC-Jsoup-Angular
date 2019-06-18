@@ -66,6 +66,10 @@ public class ArticleService {
 	// LOGGER.error("Error bulk index", e);
 	// }
 	// }
+	
+	public void removeAll() {
+		articleRepository.deleteAll();
+	}
 
 	public List<Article> getAll() {
 		List<Article> articlesList = new ArrayList<>();
@@ -86,8 +90,8 @@ public class ArticleService {
 		return articlesList;
 	}
 
-	public List<Article> getByText(String text) {
-		return articleRepository.findByText(text);
+	public Page<Article> getByText(String text, Pageable pageable) {
+		return articleRepository.findByText(text, pageable);
 	}
 
 	public List<Article> getByTitle(String title) {

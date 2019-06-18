@@ -13,10 +13,10 @@ kafka:
 social:
   twitter:
     auth:
-#      apiKey: API_KEY
-#      apiSecretKey: API_SECRET_KEY
-#      accessToken: ACCESS_TOKEN
-#      accessTokenSecret: ACCESS_TOKEN_SECRET
+      apiKey: API_KEY
+      apiSecretKey: API_SECRET_KEY
+      accessToken: ACCESS_TOKEN
+      accessTokenSecret: ACCESS_TOKEN_SECRET
     count: 100
 
 # Crawler Configs
