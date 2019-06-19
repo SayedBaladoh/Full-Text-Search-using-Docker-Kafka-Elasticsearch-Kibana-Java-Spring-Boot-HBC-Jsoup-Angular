@@ -165,7 +165,7 @@ To run this project, install it locally as follow:
 
 * **Full-Text Search Front-end application**
 
-To access the frontend application use the following endpoin
+	To access the frontend application use the following endpoins:
 
 	+ http://localhost:4200
 	
