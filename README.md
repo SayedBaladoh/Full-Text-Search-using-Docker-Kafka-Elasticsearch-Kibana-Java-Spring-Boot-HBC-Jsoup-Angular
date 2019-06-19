@@ -200,7 +200,7 @@ To run this project, install it locally as follow:
 * [Streaming Real-time Twitter feeds using Apache Kafka](https://www.linkedin.com/pulse/streaming-real-time-twitter-feeds-using-apache-kafka-manisha-malhotra/)
 * [Write a Kafka Producer Using Twitter Stream](https://dzone.com/articles/how-to-write-a-kafka-producer-using-twitter-stream)
 * [Building a Full-Text Search App Using Docker and Elasticsearch](https://blog.patricktriest.com/text-search-docker-elasticsearch/)
-* [Elasticsearch with Spring Boot] (https://piotrminkowski.wordpress.com/2019/03/29/elasticsearch-with-spring-boot/)
+* [Elasticsearch with Spring Boot](https://piotrminkowski.wordpress.com/2019/03/29/elasticsearch-with-spring-boot/)
 
 ## About me
 
