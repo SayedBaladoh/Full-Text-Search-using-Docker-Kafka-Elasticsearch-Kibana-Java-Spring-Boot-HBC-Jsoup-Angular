@@ -2,11 +2,11 @@
 
 Designing and implementing a system to stream, capture, clean, store data, and allows users to make full-text search and filter data collected from different sources (social media, world wide web). It has the following services:
 
-	+ **Producer service** to extract data from different sources (social media and web), clean, send it to Kafka producer and provide APIs to configure and launch the streaming for social media (twitter) and Crawling the web sites using Java, Spring Boot, Spring Kafka and Maven.
++ **Producer service** to extract data from different sources (social media and web), clean, send it to Kafka producer and provide APIs to configure and launch the streaming for social media (twitter) and Crawling the web sites using Java, Spring Boot, Spring Kafka and Maven.
 
-	+ **Consumer service** is a Kafka Consumer to read messages from Kafka, process and index them into Elasticsearch and provide APIs for full-text searching and filtering data from Elasticsearch using Java, Spring Boot, Spring Kafka, Spring Data Elasticsearch and Maven.
++ **Consumer service** is a Kafka Consumer to read messages from Kafka, process and index them into Elasticsearch and provide APIs for full-text searching and filtering data from Elasticsearch using Java, Spring Boot, Spring Kafka, Spring Data Elasticsearch and Maven.
 
-	+ **FrontEnd app** is a simple UI application using Angular to configure and launch the real-time social media (twitter) streamer and web crawler. It also provide full-text search on the collected data in a simple way.
++ **FrontEnd app** is a simple UI application using Angular to configure and launch the real-time social media (twitter) streamer and web crawler. It also provide full-text search on the collected data in a simple way.
 
 ## Table of contents
 * [Architecture](#architecture)
@@ -20,11 +20,11 @@ The  next diagram shows the system architecture
 
 ![Architecture Diagram](images/Architecture.png)
 
-	+ Tha admin of the system *configure and launch* the real-time social media streaming (Twitter for this case study)  and web crawling for any other web site using simple UI app. The streaming data send to *Kafka produce*.
-	+ The *Kafka consumer* consumes data and the consumer service converting it to *Elasticsearch*.
-	+ The *Elasticsearch* receives data from Kafka to index and store it.
-	+ Tha admin can use *Kibana* to visualize, monitor and manage data.
-	+ The user can use a simple *UI search* app to make *full-text search* and filter the collected data.
++ Tha admin of the system *configure and launch* the real-time social media streaming (Twitter for this case study)  and web crawling for any other web site using simple UI app. The streaming data send to *Kafka produce*.
++ The *Kafka consumer* consumes data and the consumer service converting it to *Elasticsearch*.
++ The *Elasticsearch* receives data from Kafka to index and store it.
++ Tha admin can use *Kibana* to visualize, monitor and manage data.
++ The user can use a simple *UI search* app to make *full-text search* and filter the collected data.
 
 ## Technologies
 This project is created using the following technologies:
@@ -104,7 +104,7 @@ To run this project, install it locally as follow:
 	
 	You can even make other checks in order to make sure your Kibana and elasticsearch are running. Open your internet browser and use the following URLs:
 
-	+ http://localhost:9200/ (elasticsearch)
+	+ http://localhost:9200/ (Elasticsearch)
 	+ http://localhost:5601/ (Kibana)
 	
 5. **Run Producer service application**
@@ -117,9 +117,9 @@ To run this project, install it locally as follow:
 	```
 	The producer service will start on port `8081`, So you'll be able to visit it under address `http://localhost:8081`.
 	
-	+ To view `info` about `producer` service `http://localhost:8081/producer/actuator/info`
+	+ http://localhost:8081/producer/actuator/info (To view `info` about `producer` service)
 	
-	+ To `Check Health` for `producer` service `http://localhost:8081/producer/actuator/health`
+	+ http://localhost:8081/producer/actuator/health (To `Check Health` for `producer` service)
 
 6. **Run the Consumer service application**
 
@@ -132,9 +132,9 @@ To run this project, install it locally as follow:
 	
 	The consumer service will start on port `8082`, So you'll be able to visit it under address `http://localhost:8082`. 
 
-	+ To view `info` about `consumer` service `http://localhost:8082/consumer/actuator/info`
+	+ http://localhost:8082/consumer/actuator/info (To view `info` about `consumer` service)
 	
-	+ To `Check Health` for `producer` service `http://localhost:8082/consumer/actuator/health`
+	+ http://localhost:8082/consumer/actuator/health (To `Check Health` for `producer` service)
 			
 7. **Start the Frontend application**
 
@@ -146,7 +146,7 @@ To run this project, install it locally as follow:
 	ng serve
 	```
 	
-	The UI app will start on port `4200` by default, So once you have successfully started application you'll be able to visit it using `http://localhost:4200`.
+	The UI app will start on port `4200` by default, So once you have successfully started application you'll be able to visit it using http://localhost:4200
 
 8. **Package the applications**
 
@@ -167,7 +167,7 @@ To run this project, install it locally as follow:
 
 To access the frontend application use the following endpoin
 
-	`http://localhost:4200`
+	+ http://localhost:4200
 	
 	![Full-Text Search UI](images/FullTextSearchUI.png)
 	
@@ -177,7 +177,7 @@ To access the frontend application use the following endpoin
 		
 	Use *Settings* to configure and launch the real-time social media (twitter) streaming and web crawling to collect your required data.
 	
-	+ `http://localhost:4200/config`
+	+ http://localhost:4200/config
 		
 	![Full-Text Search UI Settings tab](images/SettingsFullTextSearchUI.png)
 	 
@@ -185,7 +185,7 @@ To access the frontend application use the following endpoin
 
 	 The *Search* link provide full-text search on the collected data.
 	 
-	 + `http://localhost:4200/search`
+	 + http://localhost:4200/search
 
 	![Full-Text Search UI Search tab](images/SearchFullTextSearchUI.png)	 
 	 
